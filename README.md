@@ -21,7 +21,7 @@
 
 ```js
 <script type="module">
-  import eis from "https://unpkg.com/eis-store@latest/eis.js";
+  import eis from "https://unpkg.com/eis@latest/eis.js";
 </script>
 ```
 
@@ -50,7 +50,7 @@ count.set(state => {
 
 ```jsx
 import React, { useEffect, useState } from "react";
-import eis from "eis";
+import eis from "eis.js";
 
 const store = eis({ count: 0 });
 
