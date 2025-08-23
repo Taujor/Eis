@@ -48,7 +48,7 @@ count.set(state => {
 
 ### React
 
-```react
+```jsx
 import React, { useEffect, useState } from "react";
 import eis from "eis";
 
