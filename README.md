@@ -75,26 +75,25 @@ export default function Counter() {
 
 ## API
 
+Creates a new store.
 ```js
 const store = new Eis("any json serializable object or primitive value"); 
 ```
-Creates a new store.
 
+Returns the current state.
 ```js
 store.get()
 ```
-Returns the current state.
 
+Applies an update function or assigns a new value. The updater receives a cloned state object to mutate.
 ```js
 store.set(update)
 ```
-Applies an update function or assigns a new value. The updater receives a cloned state object to mutate.
 
+Registers a callback that runs whenever state changes and returns an unsubscribe function.
 ```js
 const unsubscribe = store.subscribe(listener)
 ```
-Registers a callback that runs whenever state changes.
-Returns an unsubscribe function.
 
 🧊 Why "Eis"?
 
