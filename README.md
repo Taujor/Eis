@@ -45,6 +45,8 @@ A lightweight, immutable state management library for JavaScript applications.
 
 ## Installation
 
+not currently available via npm/yarn:
+
 ```bash
 npm install eis
 # or
