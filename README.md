@@ -86,11 +86,11 @@ unsubscribe();
 
 ## Use Cases
 
-*Simple State Management*: Ideal for small to medium sized web apps.
-*Immutable Data Flow*: Ensures data integrity by preventing direct state mutations.
-*Reactive UI Updates*: Works well with UI libraries for reactive updates.
-*Debugging*: Clear error messages help identify issues during development.
-*Testing*: Predictable state updates make testing straightforward.
+- **Simple State Management**: Ideal for small to medium sized web apps.
+- **Immutable Data Flow**: Ensures data integrity by preventing direct state mutations.
+- **Reactive UI Updates**: Works well with UI libraries for reactive updates.
+- **Debugging**: Clear error messages help identify issues during development.
+- **Testing**: Predictable state updates make testing straightforward.
 
 ## Limitations
 
