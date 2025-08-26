@@ -94,11 +94,11 @@ unsubscribe();
 
 ## Limitations
 
-*No Circular References*: Cannot clone or freeze objects with circular references.
-*No Functions as State*: Functions stored in state will be lost during cloning.
-*No Symbols or Undefined* ```JSON.parse(JSON.stringify(...))``` does not handle ```Symbol``` or ```undefined``` values.
-*Performance Overhead*: Deep cloning and freezing can be slow for very large state objects.
-*No built-in state merging*: Currently no machinery exists to merge one state object into another automatically
+- **No Circular References**: Cannot clone or freeze objects with circular references.
+- **No Functions as State**: Functions stored in state will be lost during cloning.
+- **No Symbols or Undefined** ```JSON.parse(JSON.stringify(...))``` does not handle ```Symbol``` or ```undefined``` values.
+- **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects.
+- **No built-in state merging**: Currently no machinery exists to merge one state object into another automatically
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
