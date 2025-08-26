@@ -31,7 +31,7 @@ A lightweight, immutable state management library for JavaScript applications.
 |----------------|-------------------------------------------------------------------------------------------------|
 | `get()`        | Returns the current state.                                                                       |
 | `set(value)`   | Updates the state. Accepts either a new state or an updater function.                           |
-| `subscribe(l)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
+| `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
 
 ### Error Handling
 - **Invalid Object Freeze**: Logs an error if an invalid object is passed to `_freeze`.
