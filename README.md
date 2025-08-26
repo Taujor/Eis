@@ -30,7 +30,7 @@ A lightweight, immutable state management library for JavaScript applications.
 | Method         | Description                                                                                     |
 |----------------|-------------------------------------------------------------------------------------------------|
 | `get()`        | Returns the current state.                                                                       |
-| `set(value)`   | Updates the state. Accepts either a new state or an updater function.                           |
+| `set((state) => {}) or set(value)`   | Updates the state. Accepts either a new state or an updater function that returns new state.                           |
 | `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
 
 ### Error Handling
