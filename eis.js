@@ -1,10 +1,15 @@
 function eis (initialState){
+  if (initialState === undefined) {
+    console.error("[EIS] InitError: initialState cannot be undefined.");
+    initialState = null;
+  }
+  
   let state = _isValidObject(initialState) ? _freeze(_clone(initialState)) : initialState;
   const listeners = new Set();
   
   function _freeze(object) {
     if (!_isValidObject(object)){
-      console.error( `[EIS] TypeError: Unable to freeze object. Expected a plain object, got ${typeof object}.`, object);
+      console.error(`[EIS] TypeError: Unable to freeze object. Expected a plain object or array, got ${typeof object}.`, object);
       return object
     };
   
@@ -29,21 +34,28 @@ function eis (initialState){
     } catch (err) {
       console.error(
         `[EIS] CloneError: Object is not serializable. ` +
-        `Only plain objects, arrays, strings, numbers, booleans, and null are supported. ` +
+        `Only plain objects and arrays are supported. ` +
         `Received: ${typeof object}. ` +
         `Error: ${err.message}`
       );
+    );
 
-      return object;
-    }
+    return null;
   }
+}
     
-  function _isValidObject(object){
-    return typeof object === "object";
+  function _isValidObject(object) {
+    return object !== null && typeof object === "object";
   }
-  
-  function _notify(){
-    listeners.forEach((listener) => listener(state));
+
+  function _notify() {
+    listeners.forEach((listener) => {
+      try {
+        listener(state);
+      } catch (err) {
+        console.error(`[EIS] ListenerError: ${err.message}`);
+      }
+    });
   }
   
   function set (value){
@@ -54,6 +66,7 @@ function eis (initialState){
 
       return;
     }
+    
     
     let next = typeof value === "function" ? value(state) : value;
     
@@ -69,7 +82,16 @@ function eis (initialState){
       return;
     }
     
-    state = _isValidObject(next) ? _freeze(_clone(next)) : next; 
+    if (_isValidObject(next)) {
+      const cloned = _clone(next);
+      if (cloned === null) {
+        console.error("[EIS] SetError: Cannot set state due to non-serializable object.");
+        return;
+      }
+      state = _freeze(cloned);
+    } else {
+      state = next;
+    }
     
     _notify();
   }
