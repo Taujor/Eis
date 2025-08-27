@@ -35,13 +35,13 @@ A lightweight, immutable state management library for JavaScript applications.
 
 ### Error Handling
 
-- **Invalid Initial State**: Logs an InitError if initialState is undefined, defaulting to null.
-- **Invalid Object Freeze**: Logs a TypeError if an invalid object (e.g., string, number, null) is passed to _freeze, expecting a plain object or array.
-- **Non-serializable Object**: Logs a CloneError if an object or array cannot be cloned due to non-serializable data (e.g., functions, Date objects). Also logs a SetError if the state cannot be set due to non-serializable data.
-- **Undefined Set Value**: Logs a SetError if set is called with undefined.
-- **Updater Returns Undefined**: Logs a NoOp warning if an updater function returns undefined.
-- **Same State Reference**: Logs a NoOp warning if set is called with the same state reference (checked via Object.is).
-- **Invalid Listener**: Logs a SubscribeError if a non-function is passed to subscribe, ignoring the subscription.
+- **Invalid Initial State**: Logs an `InitError` if `initialState` is undefined, defaulting to null.
+- **Invalid Object Freeze**: Logs a `TypeError` if an invalid object (e.g., string, number, null) is passed to `_freeze`, expecting a plain object or array.
+- **Non-serializable Object**: Logs a `CloneError` if an object or array cannot be cloned due to non-serializable data (e.g., functions, Date objects). Also logs a `SetError` if the state cannot be set due to non-serializable data.
+- **Undefined Set Value**: Logs a `SetError` if set is called with undefined.
+- **Updater Returns Undefined**: Logs a `NoOp` warning if an updater function returns undefined.
+- **Same State Reference**: Logs a `NoOp` warning if set is called with the same state reference (checked via Object.is).
+- **Invalid Listener**: Logs a `SubscribeError` if a non-function is passed to subscribe, ignoring the subscription.
 
 
 ---
@@ -63,6 +63,8 @@ import eis from './eis.js'
 ```
 
 ## Example
+
+### JavaScript
 
 ```js
 import eis from 'eis';
@@ -88,6 +90,49 @@ console.log(get());
 // Unsubscribe
 unsubscribe();
 ```
+### React
+
+```jsx
+import { useEffect, useState } from 'react';
+import eis from './eis.js';
+
+// Initialize the state store with a number
+const [get, set, subscribe] = eis(0);
+
+function Counter() {
+  // Use React state to trigger re-renders
+  const [count, setCount] = useState(get());
+
+  // Subscribe to eis state changes
+  useEffect(() => {
+    const unsubscribe = subscribe((newState) => {
+      console.log('Count:', newState);
+      setCount(newState); // Update React state
+    }, true); // Immediate invocation to sync initial state
+    return unsubscribe; // Cleanup on unmount
+  }, []);
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <h1>Simple Counter</h1>
+      <p>Count: {count}</p>
+      <button
+        onClick={() => set((state) => state + 1)}
+        style={{ marginRight: '10px' }}
+      >
+        Increment
+      </button>
+      <button
+        onClick={() => set((state) => state - 1)}
+      >
+        Decrement
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
+```
 
 ## Use Cases
 
@@ -104,7 +149,6 @@ unsubscribe();
 - **No Symbols or Undefined** ```JSON.parse(JSON.stringify(...))``` does not handle ```Symbol``` or ```undefined``` values.
 - **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects.
 - **No built-in state merging**: Currently no machinery exists to merge one state object into another automatically
-- **No null state**: The top level state object can never be null.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
