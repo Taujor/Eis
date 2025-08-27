@@ -38,9 +38,7 @@ function eis (initialState){
         `Received: ${typeof object}. ` +
         `Error: ${err.message}`
       );
-    );
-
-    return null;
+      return null;
   }
 }
     
