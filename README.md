@@ -25,7 +25,7 @@
 |----------------|-------------------------------------------------------------------------------------------------|
 | `get()`        | Returns the current state.                                                                       |
 | `set((state) => {})` or `set(value)`   | Replaces the state. Accepts either a new state or an updater function that returns new state.                           |
-| `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
+| `subscribe((state => {})), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function. Setting false to true will run the listener instantly.             |
 
 ### Error Handling
 
