@@ -30,7 +30,7 @@ A lightweight, immutable state management library for JavaScript applications.
 | Method         | Description                                                                                     |
 |----------------|-------------------------------------------------------------------------------------------------|
 | `get()`        | Returns the current state.                                                                       |
-| `set((state) => {})` or `set(value)`   | Updates the state. Accepts either a new state or an updater function that returns new state.                           |
+| `set((state) => {})` or `set(value)`   | Replaces the state. Accepts either a new state or an updater function that returns new state.                           |
 | `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
 
 ### Error Handling
@@ -147,8 +147,17 @@ export default Counter;
 - **No Circular References**: Cannot clone or freeze objects with circular references.
 - **No Functions as State**: Functions stored in state will be lost during cloning.
 - **No Symbols or Undefined** ```JSON.parse(JSON.stringify(...))``` does not handle ```Symbol``` or ```undefined``` values.
-- **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects.
+- **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects. Try to keep them small or even better flat. Use multiple local stores instead of a single global store to achieve better performance.
 - **No built-in state merging**: Currently no machinery exists to merge one state object into another automatically
+
+## Upcoming Features
+
+While eis is production ready this version is not my complete vision, there are many areas to improve upon. Here is a list of features I plan to add in the future.
+
+- **Lazy cloning and freezing**: For better performance when manipulating large state objects making manipulating global or complex state performant with eis.
+- **Automatic Merging**: a function by the name of `update` will be added to the api which instead of replacing state like set does will merge the given state into the current state.
+- **Complex Object Support**: Full support for functions, date objects, maps, symbols, etc as state to facilitate more complex state management patterns.
+- **Documentation**: I will create a documentation website for eis with tutorials, framework integration examples, and extensive documention so everyone can use eis to it's full potential.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
