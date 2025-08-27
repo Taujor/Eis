@@ -34,12 +34,13 @@ A lightweight, immutable state management library for JavaScript applications.
 | `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
 
 ### Error Handling
-- **Invalid Object Freeze**: Logs an error if an invalid object is passed to `_freeze`.
-- **Non-serializable Object**: Logs an error if an object cannot be cloned.
-- **Undefined Set Value**: Logs an error if `set` is called with `undefined`.
-- **Updater Returns Undefined**: Logs a warning if an updater function returns `undefined`.
-- **Same State Reference**: Logs a warning if `set` is called with the same state reference.
-- **Invalid Listener**: Logs an error if a non-function is passed to `subscribe`.
+- **Invalid Initial State**: Logs an `InitError` if `initialState` is `undefined` or `null`, defaulting to an empty object (`{}`).
+- **Invalid Object Freeze**: Logs a `TypeError` if an invalid object (e.g., `null`, string, number) is passed to `_freeze`, expecting a plain object or array.
+- **Non-serializable Object**: Logs a `CloneError` if an object or array cannot be cloned due to non-serializable data (e.g., functions, `Date` objects). Also logs an `InitError` or `SetError` if the state cannot be set due to non-serializable data.
+- **Undefined Set Value**: Logs a `SetError` if `set` is called with `undefined`.
+- **Updater Returns Undefined**: Logs a `NoOp` warning if an updater function returns `undefined`.
+- **Same State Reference**: Logs a `NoOp` warning if `set` is called with the same state reference (checked via `Object.is`).
+- **Invalid Listener**: Logs a `Subscribe Error` if a non-function is passed to `subscribe`, ignoring the subscription.
 
 ---
 
@@ -101,6 +102,7 @@ unsubscribe();
 - **No Symbols or Undefined** ```JSON.parse(JSON.stringify(...))``` does not handle ```Symbol``` or ```undefined``` values.
 - **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects.
 - **No built-in state merging**: Currently no machinery exists to merge one state object into another automatically
+- **No null state**: The top level state object can never be null.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
