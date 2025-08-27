@@ -1,4 +1,4 @@
-# EIS (Extremely Immutable State) ❄️
+# EIS ❄️ (Extremely Immutable State)
 
 > A tiny, framework-agnostic state store for the web.  
 > Simple, reactive, and immutable. Works with everything.
