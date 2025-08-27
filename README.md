@@ -151,7 +151,7 @@ While eis is production ready this version is not my complete vision, there are 
 - **Lazy cloning and freezing**: For better performance when manipulating large state objects making manipulating global or complex state performant with eis.
 - **Automatic Merging**: a function by the name of `update` will be added to the api which instead of replacing state like set does will merge the given state into the current state.
 - **Complex Object Support**: Full support for functions, date objects, maps, symbols, etc as state to facilitate more complex state management patterns.
-- **Documentation**: I will create a documentation website for eis with tutorials, framework integration examples, and extensive documention so everyone can use eis to it's full potential.
+- **Documentation**: I will create a documentation website for eis with tutorials, framework integration examples, and extensive documention so everyone can use eis to its full potential.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
