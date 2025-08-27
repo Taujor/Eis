@@ -34,13 +34,15 @@ A lightweight, immutable state management library for JavaScript applications.
 | `subscribe((state => {)), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function.              |
 
 ### Error Handling
-- **Invalid Initial State**: Logs an `InitError` if `initialState` is `undefined` or `null`, defaulting to an empty object (`{}`).
-- **Invalid Object Freeze**: Logs a `TypeError` if an invalid object (e.g., `null`, string, number) is passed to `_freeze`, expecting a plain object or array.
-- **Non-serializable Object**: Logs a `CloneError` if an object or array cannot be cloned due to non-serializable data (e.g., functions, `Date` objects). Also logs an `InitError` or `SetError` if the state cannot be set due to non-serializable data.
-- **Undefined Set Value**: Logs a `SetError` if `set` is called with `undefined`.
-- **Updater Returns Undefined**: Logs a `NoOp` warning if an updater function returns `undefined`.
-- **Same State Reference**: Logs a `NoOp` warning if `set` is called with the same state reference (checked via `Object.is`).
-- **Invalid Listener**: Logs a `Subscribe Error` if a non-function is passed to `subscribe`, ignoring the subscription.
+
+- **Invalid Initial State**: Logs an InitError if initialState is undefined, defaulting to null.
+- **Invalid Object Freeze**: Logs a TypeError if an invalid object (e.g., string, number, null) is passed to _freeze, expecting a plain object or array.
+- **Non-serializable Object**: Logs a CloneError if an object or array cannot be cloned due to non-serializable data (e.g., functions, Date objects). Also logs a SetError if the state cannot be set due to non-serializable data.
+- **Undefined Set Value**: Logs a SetError if set is called with undefined.
+- **Updater Returns Undefined**: Logs a NoOp warning if an updater function returns undefined.
+- **Same State Reference**: Logs a NoOp warning if set is called with the same state reference (checked via Object.is).
+- **Invalid Listener**: Logs a SubscribeError if a non-function is passed to subscribe, ignoring the subscription.
+
 
 ---
 
