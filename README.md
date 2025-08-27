@@ -1,3 +1,6 @@
+[![Sponsor](https://img.shields.io/badge/Sponsor-GitHub-181717?style=flat&logo=GitHub)](https://github.com/sponsors/taujor)
+
+
 # EIS ❄️ (Extremely Immutable State)
 
 > A tiny, framework-agnostic state store for the web.  
