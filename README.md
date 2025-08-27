@@ -1,13 +1,7 @@
-# Eis ❄️
+# EIS (Extremely Immutable State) ❄️
 
 > A tiny, framework-agnostic state store for the web.  
 > Simple, reactive, and immutable. Works with everything.
-
----
-
-# EIS (Extremely Immutable State)
-
-A lightweight, immutable state management library for JavaScript applications.
 
 ---
 
