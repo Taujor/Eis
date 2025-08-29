@@ -41,7 +41,7 @@ npm install eis
 yarn add eis
 ```
 Via CDN:
-```
+```js
 import eis from 'https://unpkg.com/@taujor/eis/eis.js'
 ```
 Or include directly in your project:
