@@ -40,6 +40,10 @@ npm install eis
 # or
 yarn add eis
 ```
+Via CDN:
+```
+import eis from 'https://unpkg.com/@taujor/eis/eis.js'
+```
 Or include directly in your project:
 ```js
 import eis from './eis.js'
