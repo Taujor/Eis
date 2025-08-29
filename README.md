@@ -11,7 +11,6 @@
 - **Deep Clone**: Uses `structuredClone` if available, falls back to `JSON.parse(JSON.stringify(...))` to ensure state updates are truly immutable.
 - **Simple API**: Only three methods: `get`, `set`, and `subscribe`.
 - **Functional Updates**: Supports both direct value updates and updater functions.
-- **Change Detection**: Only updates and notifies listeners if the new state is a different reference.
 - **Subscription Model**: Listen to state changes and react accordingly.
 - **Instant Notification**: Optionally call listeners immediately with the current state.
 - **Unsubscribe Support**: Easily remove listeners when no longer needed.
