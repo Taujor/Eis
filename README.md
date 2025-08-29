@@ -121,7 +121,7 @@ export default Counter;
 ## Limitations
 - **No Circular References**: Cannot clone or freeze objects with circular references. Results in a `CloneError` or `FreezeError`.
 - **No Functions as State**: Functions stored in state will throw a `CloneError` during cloning.
-- **No Symbols or Undefined**: `JSON.parse(JSON.stringify(...))` does not handle `Symbol` or `undefined` values so for consistency non-serializable objects like this are also be rejected when using `structuredClone`.
+- **No Symbols or Undefined**: `JSON.parse(JSON.stringify(...))` does not handle `Symbol` or `undefined` values so for consistency non-serializable objects like this are also rejected when using `structuredClone`.
 - **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects. Try to keep them small or even better flat. Use multiple local stores instead of a single global store to achieve better performance.
 - **No Built-in State Merging**: Currently no machinery exists to merge one state object into another automatically.
 
