@@ -35,7 +35,6 @@
 
 ---
 ## Installation
-Not currently available via npm/yarn:
 ```bash
 npm install eis
 # or
