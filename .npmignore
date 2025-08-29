@@ -1,0 +1,6 @@
+# .npmignore
+*
+!eis.js
+!package.json
+!README.md
+!LICENSE

@@ -1,0 +1,22 @@
+{
+  "name": "@taujor/eis",
+  "version": "1.0.0",
+  "description": "EIS ❄️ (Extremely Immutable State) A tiny, framework-agnostic state store for the web. Simple, reactive, and immutable. Works with everything.",
+  "main": "eis.js",
+  "files": ["eis.js"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taujor/eis.git"
+  },
+  "keywords": ["state-management", "state", "store", "immutable", "reactive", "observer", "subscription-based", "subscription-model"],
+  "author": "taujor",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/taujor/eis/issues"
+  },
+  "homepage": "https://github.com/taujor/eis#readme"
+}
