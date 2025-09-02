@@ -52,7 +52,7 @@ import eis from './eis.js'
 ## Example
 ### JavaScript
 ```js
-import eis from 'eis';
+import eis from '@taujor/eis';
 const [get, set, subscribe] = eis({ count: 0 });
 // Subscribe to state changes
 const unsubscribe = subscribe((state) => {
