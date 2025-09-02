@@ -146,3 +146,7 @@ export default Counter;
 ---
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
+
+---
+## Working on something cool?
+If you're using eis.js why not show off about it? Let everyone know in the dedicated [discussion](https://github.com/Taujor/Eis/discussions/1)
