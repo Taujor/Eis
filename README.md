@@ -45,7 +45,7 @@ import eis from 'https://unpkg.com/@taujor/eis/eis.js'
 ```
 Or include directly in your project:
 ```js
-import eis from './eis.js'
+import eis from '@taujor/eis'
 ```
 
 ---
@@ -73,7 +73,7 @@ unsubscribe();
 ### React
 ```jsx
 import { useEffect, useState } from 'react';
-import eis from './eis.js';
+import eis from '@taujor/eis';
 // Initialize the state store with a number
 const [get, set, subscribe] = eis(0);
 function Counter() {
