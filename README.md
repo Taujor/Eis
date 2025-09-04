@@ -36,7 +36,9 @@
 ## Installation
 ```bash
 npm install eis
-# or
+```
+or
+```bash
 yarn add eis
 ```
 Via CDN:
