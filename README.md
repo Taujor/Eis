@@ -35,11 +35,11 @@
 ---
 ## Installation
 ```bash
-npm install eis
+npm install @taujor/eis
 ```
 or
 ```bash
-yarn add eis
+yarn add @taujor/eis
 ```
 Via CDN:
 ```js
