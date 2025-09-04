@@ -23,7 +23,7 @@
 | `get()`        | Returns the current state.                                                                       |
 | `set((state) => {})` or `set(value)`   | Replaces the state. Accepts either a new state or an updater function that returns new state.                           |
 | `subscribe((state => {})), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function. Setting false to true will run the listener instantly.             |
-
+| `eis(null, {"your state": false})`        | Sets developer mode to false disabling freezing and cloning for better performance.                                                                       |
 ### Error Handling
 - **Invalid Initial State**: Logs an `InitError` if `initialState` is undefined, defaulting to null.
 - **Invalid Object Freeze**: Throws a `TypeError` if an invalid object (e.g., string, number, null) is passed to `_freeze`, expecting a plain object or array.
@@ -119,29 +119,12 @@ export default Counter;
 
 ---
 ## Limitations
-- **No Circular References**: Cannot clone or freeze objects with circular references. Results in a `CloneError` or `FreezeError`.
-- **No Functions as State**: Functions stored in state will throw a `CloneError` during cloning.
-- **No Symbols or Undefined**: `JSON.parse(JSON.stringify(...))` does not handle `Symbol` or `undefined` values so for consistency non-serializable objects like this are also rejected when using `structuredClone`.
-- **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects. Try to keep them small or even better flat. Use multiple local stores instead of a single global store to achieve better performance.
-- **No Built-in State Merging**: Currently no machinery exists to merge one state object into another automatically.
+- **JSON Serializable Objects**: `JSON.parse(JSON.stringify(...))` does not handle non-serializable objects so for consistency non-serializable objects are also rejected when using `structuredClone`.
+- **Performance Overhead**: Deep cloning and freezing can be slow for very large state objects. Try to keep them small or even better flat. Use multiple local stores instead of a single global store to achieve better performance. While still good practice this is now mitigated by setting developer mode to false to disable cloning/freezing in production like so `eis(null, {dev: false})`
 
 ---
 ## Upcoming Features
-- **Lazy cloning and freezing**: For better performance when manipulating large state objects making manipulating global or complex state performant with eis.
-- **Automatic Merging**: A function by the name of `update` will be added to the API which instead of replacing state like set does will merge the given state into the current state.
 - **Documentation**: A documentation website for eis with tutorials, framework integration examples, and extensive technical documentation so everyone can use eis to its full potential.
-
----
-## Changelog
-
-### v1.0.0 (Latest)
-- **New**: Added `_isSerializable` helper for better error handling.
-- **New**: Uses `structuredClone` if available, falls back to JSON methods.
-- **Fix**: `_freeze` now properly handles arrays and already frozen objects.
-- **Improvement**: `_freeze` does not attempt to freeze top-level or nested primitive data types in objects or arrays.
-- **Improvement**: `set` now passes a cloned state to updater functions (no need to spread state into a new object before returning from updater functions).
-- **Improvement**: More descriptive error messages and logging.
-- **Improvement**: Throws errors for invalid objects in `_freeze` and `_clone`.
 
 ---
 ## Contributing

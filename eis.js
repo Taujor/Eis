@@ -1,4 +1,5 @@
-function eis(initialState) {
+function eis(initialState, {dev = true} = {}) {
+
   if (initialState === undefined) {
     console.error("[EIS] InitError: initialState cannot be undefined, defaulting to null...");
     initialState = null;
@@ -21,6 +22,8 @@ function eis(initialState) {
   }
 
   function _clone(object) {
+    if(dev === false) return object;
+
     if (!_isValidObject(object)) return object;
 
     if (!_isSerializable(object)) {
@@ -33,6 +36,8 @@ function eis(initialState) {
   }
 
   function _freeze(object) {
+    if(dev === false) return object;
+
     if (!_isValidObject(object)) {
       throw new TypeError(
         `[EIS] FreezeError: Unable to freeze object. Expected a plain object or array, got ${typeof object}.`
