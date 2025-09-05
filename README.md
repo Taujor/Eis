@@ -16,6 +16,8 @@
 - **Unsubscribe Support**: Easily remove listeners when no longer needed.
 - **Clear Error Handling**: Provides actionable error messages for debugging.
 - **No External Dependencies**: Self-contained, minimalistic, and easy to integrate.
+- **Developer Mode**:
+Optional developer mode toggle for maximum performance in production scenarios.
 
 ### API Methods
 | Method         | Description                                                                                     |
@@ -23,7 +25,7 @@
 | `get()`        | Returns the current state.                                                                       |
 | `set((state) => {})` or `set(value)`   | Replaces the state. Accepts either a new state or an updater function that returns new state.                           |
 | `subscribe((state => {})), false)` | Subscribes a listener function to state changes. Returns an unsubscribe function. Setting false to true will run the listener instantly.             |
-| `eis(null, {"dev": false})`        | Default exported function the first argument takes your inital state (uses `set`) and the second is an optional configuration object that can be used to set developer mode to false disabling freezing and cloning for better performance.                                                                       |
+| `eis(null, {"dev": false})`        | Default exported function the first argument takes your inital state (uses `set`) and the second is an optional configuration object that can be used to set developer mode to false disabling freezing and cloning for better performance. Returns an array of functions (get, set, subscribe).                                                                      |
 ### Error Handling
 - **Invalid Initial State**: Logs an `InitError` if `initialState` is undefined, defaulting to null.
 - **Invalid Object Freeze**: Throws a `TypeError` if an invalid object (e.g., string, number, null) is passed to `_freeze`, expecting a plain object or array.
